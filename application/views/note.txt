@@ -1,0 +1,9 @@
+status ===> fix nya
+0 = belum verifikasi email (tidak tampil di verifikasi admin)
+1 = sudah veriikasi email (tampil di verifikasi admin)
+2 = admin memverifikasi akun (akun sudah aktif dan bsa login)
+
+status ====> sementara
+status
+0 = sudah veriikasi email (tampil di verifikasi admin)
+1 = admin memverifikasi akun (akun sudah aktif dan bsa login)

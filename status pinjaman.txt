@@ -1,0 +1,13 @@
+status pinjaman
+0 = di tolak
+1 = pinjaman di terima menunggu verivikasi admin
+2 = pinjaman terverifikasi
+3 = uang pinjaman cair / proses menganngsur
+4 = pinjaman selesai
+
+Akun
+- Pengajuan
+- Daftar Akun
+Pinjaman
+- Pengajuan Pinjaman
+- Pinjaman
