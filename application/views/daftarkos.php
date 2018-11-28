@@ -57,7 +57,10 @@
 								<a target="_blank" rel="noopener noreferrer" href="<?php echo $get->foto_kos; ?>"><img src="<?php echo site_url($get->foto_kos); ?>" height='30'></a>
 							</td>
 							<td>
-								<a href="Cpinjaman/detail/<?php echo $get->id_kos; ?>">
+								<a href="Cdaftarkos/editdatakos/<?php echo $get->id_kos; ?>">
+									<button type="button" class="btn btn-success btn-block"><span class="fa fa-file-text-o"> Edit</span></button>
+								</a>
+								<a href="Cdaftarkos/detail/<?php echo $get->id_kos; ?>">
 									<button type="button" class="btn btn-primary btn-block"><span class="fa fa-file-text-o"> Detail</span></button>
 								</a>
 							</td>

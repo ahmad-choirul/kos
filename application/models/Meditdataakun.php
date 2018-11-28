@@ -9,11 +9,6 @@ class Meditdataakun extends CI_Model {
 		parent::__construct();
 		
 	}
-	public function getlistkpa()
-	{
-		$query = $this->db->query('SELECT nama_kpa FROM ref_kpa');
-		return $query->result();
-	} 
 	public function getdata($where,$table){		
 		return $this->db->get_where($table,$where)->result();
 	}

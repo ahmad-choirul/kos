@@ -18,21 +18,18 @@ class Mkos extends CI_Model {
 		return $this->db->get()->row();
 	}
 	public function getalldata($number,$offset,$search=""){
-		if($search != ''){
-
-			$this->db->like('nama_kos', $search);
-			$this->db->or_like('alamat_kos', $search);
-			$this->db->or_like('deskripsi', $search);
 			$this->db->where('id_akun', $this->session->userdata('id_akun'));
-			
-		}
 		return $query = $this->db->get('datakos',$number,$offset)->result();
 	}
-	public function getdatabyid($id){
-		$this->db->where('id_registrasi', $id);
-// here we select every column of the table
-		$q = $this->db->get('t_registrasi');
-		return $data->result(); 
+	public function getdatadetailkos($id_kos)
+	{
+		$this->db->where('id_kos', $id_kos);
+		return $this->db->get('detail_kos');
+	}
+	public function getdatakosbyid($id_kos)
+	{
+		$this->db->where('id_kos', $id_kos);
+		return $this->db->get('datakos')->result();
 	}
 public function add($data)
 	{

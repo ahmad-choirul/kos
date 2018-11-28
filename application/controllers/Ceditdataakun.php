@@ -14,9 +14,8 @@ class Ceditdataakun extends CI_Controller {
 
 	public function index($errorfile = null, $errorfile2 = null)
 	{
-		$where = array('kta' => $this->session->userdata('KTA'));
+		$where = array('username' => $this->session->userdata('username'));
 		$data['akun'] = $this->Meditdataakun->getdata($where,'akun');
-		$data['listkpa'] = $this->Meditdataakun->getlistkpa();
 		$data['judul']= "edit data akun";
 		$data['errorfile']= $errorfile;
 		$data['errorfile2']= $errorfile2;
@@ -31,11 +30,10 @@ class Ceditdataakun extends CI_Controller {
 		$this->load->view('template/js');
 		$this->load->view('template/foot');
 	}
-	public function edit($kta, $errorfile = null, $errorfile2 = null)
+	public function edit($id_akun, $errorfile = null, $errorfile2 = null)
 	{
-		$where = array('kta' => $kta);
+		$where = array('id_akun' => $id_akun);
 		$data['akun'] = $this->Meditdataakun->getdata($where,'akun');
-		$data['listkpa'] = $this->Meditdataakun->getlistkpa();
 		$data['judul']= "edit data akun";
 		$data['errorfile']= $errorfile;
 		$data['errorfile2']= $errorfile2;
