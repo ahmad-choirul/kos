@@ -22,6 +22,11 @@ class Mkos extends CI_Model {
 		$query = $this->db->update('datakos',$data);
 		return $query;
 	}	
+	public function updatekamar($data,$kta){
+		$this->db->where('id_detail_kos', $kta);
+		$query = $this->db->update('detail_kos',$data);
+		return $query;
+	}	
 	public function getalldata($number,$offset,$search=""){
 			$this->db->where('id_akun', $this->session->userdata('id_akun'));
 		return $query = $this->db->get('datakos',$number,$offset)->result();
@@ -29,12 +34,17 @@ class Mkos extends CI_Model {
 	public function getdatadetailkos($id_kos)
 	{
 		$this->db->where('id_kos', $id_kos);
-		return $this->db->get('detail_kos');
+		return $this->db->get('detail_kos')->result();
 	}
 	public function getdatakosbyid($id_kos)
 	{
 		$this->db->where('id_kos', $id_kos);
 		return $this->db->get('datakos')->result();
+	}
+	public function getdatakamarkosbyid($id_kos)
+	{
+		$this->db->where('id_detail_kos', $id_kos);
+		return $this->db->get('detail_kos')->result();
 	}
 public function add($data)
 	{
