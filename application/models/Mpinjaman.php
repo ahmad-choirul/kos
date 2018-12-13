@@ -79,7 +79,7 @@ class Mpinjaman extends CI_Model {
 		$this->db->where('kta', $kta);
 		$this->db->update('stat_pinjaman');
 	}
-	public function updatestatuspinjamanbyadmin($id_pinjaman,$status)
+	public function updatestatuspinjamanbyadmin($id_pinjaman,$status,$jumlah)
 	{
 		$data = array(
 			'status' => $status
