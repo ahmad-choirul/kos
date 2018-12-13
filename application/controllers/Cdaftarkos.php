@@ -91,22 +91,9 @@ class Cdaftarkos extends CI_Controller {
 		$this->load->view('template/js');
 		$this->load->view('template/foot');
 	}
-	public function editdatakamarkos($id_kos,$error1=null)
-	{
-		$data['judul']= "edit kamar kos";
-		$data['error1'] = $error1;
-		$data['datakos'] = $this->Mkos->getdatakamarkosbyid($id_kos);
-		$this->load->view('template/head',$data);
-		$this->load->view('template/topbar');
-		$this->load->view('template/sidebaruser');
-		$this->load->view('form_edit_kamar_kos',$data);//isi view
-		$this->load->view('template/js');
-		$this->load->view('template/foot');
-	}
-	public function detail($id_kos,$error1=null)
+	public function detail($id_kos)
 	{
 		$data['daftar'] = $this->Mkos->getdatadetailkos($id_kos);
-		$data['error1'] = $error1;
 		$data['judul']= "Daftar Kamar Kos";
 		$this->load->view('template/head',$data);
 		$this->load->view('template/topbar');
@@ -265,74 +252,7 @@ class Cdaftarkos extends CI_Controller {
 				}
 			}
 		}}
-		public function updatedatakamarkos()
-		{
-			$this->load->helper('file');
-		$this->load->library('upload');
-		$this->form_validation->set_rules('nama_kamar', 'nama_kamar', 'required');
-		$this->form_validation->set_rules('harga', 'harga', 'required|alpha_dash|numeric');
-		$this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
-		$this->form_validation->set_message('required', 'Wajib diisi!');
-		$this->form_validation->set_message('alpha_dash', 'Tidak boleh mengandung spasi!');
-		$this->form_validation->set_message('is_unique', 'Data sudah ada!');
-		$this->form_validation->set_message('numeric', 'Hanya boleh diisi angka!');
-		if ($this->form_validation->run() == FALSE) {
-				$this->editdatakos($this->input->post('id_detail_kamar'));
-		} else {
-			$id_detail_kamar = $this->input->post('id_detail_kamar');
-			$nama_kamar = $this->input->post('nama_kamar');
-			$harga = $this->input->post('harga');
-			$deskripsi = $this->input->post('deskripsi');
-			$data = array(
-				'nama_kamar' => $nama_kamar,
-				'harga' => $harga,
-				'deskripsi' => $deskripsi
-			);
-			$query = $this->Mkos->updatekamar($data,$id_detail_kamar);
-			if ($query>0) {
-				if (!empty($_FILES['foto_kamar_kos']['name'])) {
-					$filename = $_FILES['foto_kamar_kos']['name'];
-					$ext = pathinfo($filename, PATHINFO_EXTENSION);
-					$config['allowed_types'] = 'jpg|jpeg';
-					$config['overwrite'] = true;
-					$config['upload_path'] = 'assets/gambar_upload/fotokamarkos/';
-					$config['file_name'] = $id_detail_kamar.'_kamarkos.'.$ext;
-					$config['max_size'] = 2000;
-
-					$this->upload->initialize($config);
-
-					if ($this->upload->do_upload('foto_kamar_kos')){
-						$foto_kamar_kos = $config['upload_path'].$this->upload->data('file_name');
-						$data = array(
-							'foto' => $foto_kamar_kos
-						);
-						$this->Mkos->updatekamar($data,$id_kamar_kos);
-					} else {
-						$errorfile = "Input Foto kamar Kos gagal!";
-					}
-				}
-				// ========================================
-
-				if (isset($errorfile) ) {
-					if ($this->session->userdata('level')=="admin") {
-						$this->editdatakamarkos($id_kamar_kos, $errorfile);
-					} else {
-						$this->editdatakamarkos($id_kamar_kos,$errorfile);
-					}
-				} else {
-					if ($this->session->userdata('level')=="admin") {
-						redirect('Cdaftarkos/detail/'.$id_kos.'','refresh');
-					}
-					else{
-						redirect('Cdaftarkos/detail/'.$id_kos.'','refresh');
-					}	
-				}
-				// =====================================================
-			}else{
-				echo "gagal update";
-			}
-		}
-		}
+		
 		function checkdateformat($date) {
 			$d = DateTime::createFromFormat('Y-m-d', $date);
 			if ($d == FALSE) {

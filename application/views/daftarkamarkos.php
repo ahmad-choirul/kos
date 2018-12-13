@@ -34,7 +34,7 @@
 					<th>ID kamar Kos</th>
 						<th>Nama Kamar</th>
 						<th>Harga</th>
-						<th>Deskripsi</th>
+						<th>Deskripso</th>
 						<th>foto</th>
 						<th>Aksi</th>
 					</tr>
@@ -52,7 +52,7 @@
 								<a target="_blank" rel="noopener noreferrer" href="<?php echo $get->foto; ?>"><img src="<?php echo site_url($get->foto); ?>" height='30'></a>
 							</td>
 							<td>
-								<a href="<?php echo site_url('Cdaftarkos/editdatakamarkos/'.$get->id_detail_kos.'') ?>">
+								<a href="Cdaftarkos/editdatakamarkos/<?php echo $get->id_detail_kos; ?>">
 									<button type="button" class="btn btn-success btn-block"><span class="fa fa-file-text-o"> Edit</span></button>
 								</a>
 								<a href="Cdaftarkos/hapuskamarkos/<?php echo $get->id_detail_kos; ?>">
