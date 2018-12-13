@@ -17,6 +17,11 @@ class Mkos extends CI_Model {
 		$this->db->where('TABLE_NAME', 'datakos');
 		return $this->db->get()->row();
 	}
+	public function update($data,$kta){
+		$this->db->where('id_kos', $kta);
+		$query = $this->db->update('datakos',$data);
+		return $query;
+	}	
 	public function getalldata($number,$offset,$search=""){
 			$this->db->where('id_akun', $this->session->userdata('id_akun'));
 		return $query = $this->db->get('datakos',$number,$offset)->result();

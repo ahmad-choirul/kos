@@ -26,7 +26,7 @@
           <li><a href="<?php echo site_url('Cdaftarakun') ?>"><i class="fa fa-circle-o"></i>Daftar Akun</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <!-- <li class="treeview">
         <a href="#">
           <i class="fa fa-laptop"></i>
           <span>Pinjaman</span>
@@ -55,7 +55,7 @@
           <li><a href="<?php echo site_url('Csimpanan/jenis/sukarela/r') ?>"><i class="fa fa-circle-o"></i>Simpanan Sukarela</a></li>
           <li><a href="<?php echo site_url('Csimpanan/jenis/hariraya/r') ?>"><i class="fa fa-circle-o"></i>Simpanan Hari Raya</a></li>
         </ul>
-      </li>
+      </li> -->
     </ul>
   </section>
   <!-- /.sidebar -->

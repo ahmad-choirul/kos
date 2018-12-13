@@ -7,10 +7,10 @@
 	<div class="widget-box">
 		<div class="widget-title"> 
 			<span class="icon"> <i class="icon-th"></i> </span>
-			<h5>Tabel Daftar Pinjaman</h5>
+			<h5>Tabel Daftar kamar kos</h5>
 		</div>
 		<a href="Cdaftarkos/tambahdatakos">
-		<button type="button" class="btn btn-success" >Tambah Data Kos</button>
+		<button type="button" class="btn btn-success" >Tambah Data kamar Kos</button>
 		</a>
 		<form method="post" action="<?php echo site_url('Cpinjaman/index'); ?>">
 			<div class="row">
@@ -31,13 +31,11 @@
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>ID Kos</th>
-						<th>nama_pemilik</th>
-						<th>Nama Kos</th>
-						<th>Alamat Kos</th>
-						<th>Rentang harga</th>
-						<th>Deskripsi</th>
-						<th>Foto Kos</th>
+					<th>ID kamar Kos</th>
+						<th>Nama Kamar</th>
+						<th>Harga</th>
+						<th>Deskripso</th>
+						<th>foto</th>
 						<th>Aksi</th>
 					</tr>
 				</thead>
@@ -46,21 +44,19 @@
 					foreach($daftar as $get){
 						?>
 						<form>
-							<td><?php echo $get->id_kos; ?></td>
-							<td><?php echo $get->id_akun; ?></td>
-							<td><?php echo $get->nama_kos; ?></td>
-							<td><?php echo $get->alamat_kos; ?></td>
-							<td><?php echo $get->harga_bawah.'-';echo $get->harga_atas; ?></td>
+							<td><?php echo $get->id_detail_kos; ?></td>
+							<td><?php echo $get->nama_kamar; ?></td>
+							<td><?php echo $get->harga; ?></td>
 							<td><?php echo $get->deskripsi; ?></td>	
 							<td>
-								<a target="_blank" rel="noopener noreferrer" href="<?php echo $get->foto_kos; ?>"><img src="<?php echo site_url($get->foto_kos); ?>" height='30'></a>
+								<a target="_blank" rel="noopener noreferrer" href="<?php echo $get->foto; ?>"><img src="<?php echo site_url($get->foto); ?>" height='30'></a>
 							</td>
 							<td>
-								<a href="Cdaftarkos/editdatakos/<?php echo $get->id_kos; ?>">
+								<a href="Cdaftarkos/editdatakamarkos/<?php echo $get->id_detail_kos; ?>">
 									<button type="button" class="btn btn-success btn-block"><span class="fa fa-file-text-o"> Edit</span></button>
 								</a>
-								<a href="Cdaftarkos/detail/<?php echo $get->id_kos; ?>">
-									<button type="button" class="btn btn-primary btn-block"><span class="fa fa-file-text-o"> Detail</span></button>
+								<a href="Cdaftarkos/hapuskamarkos/<?php echo $get->id_detail_kos; ?>">
+									<button type="button" class="btn btn-primary btn-block"><span class="fa fa-file-text-o"> hapus</span></button>
 								</a>
 							</td>
 						</tr>

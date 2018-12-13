@@ -79,9 +79,10 @@ class Cdaftarkos extends CI_Controller {
 		$this->load->view('template/js');
 		$this->load->view('template/foot');
 	}	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public function editdatakos($id_kos)
+	public function editdatakos($id_kos,$error1=null)
 	{
 		$data['judul']= "akun anggota";
+		$data['error1'] = $error1;
 		$data['datakos'] = $this->Mkos->getdatakosbyid($id_kos);
 		$this->load->view('template/head',$data);
 		$this->load->view('template/topbar');
@@ -97,7 +98,7 @@ class Cdaftarkos extends CI_Controller {
 		$this->load->view('template/head',$data);
 		$this->load->view('template/topbar');
 		$this->load->view('template/sidebaruser');
-		$this->load->view('daftarkos',$data);//isi view
+		$this->load->view('daftarkamarkos',$data);//isi view
 		$this->load->view('template/js');
 		$this->load->view('template/foot');
 	}
@@ -132,108 +133,58 @@ class Cdaftarkos extends CI_Controller {
 			$alamat_kos = $this->input->post('alamat_kos');
 			$harga_bawah = $this->input->post('harga_bawah');
 			$harga_atas = $this->input->post('harga_atas');
-			$pilkpa = $this->input->post('pilkpa');
-			$tempat_tugas = $this->input->post('tempat_tugas');
-			$tempat_lahir = $this->input->post('tempat_lahir');
-			$tgl_lahir = $this->input->post('tgl_lahir');
-			$pilpensiun = $this->input->post('pilpensiun');
-			$password = $this->input->post('password');
+			$deskripsi = $this->input->post('deskripsi');
 			$data = array(
-				'NIP' => $NIP,
-				'nama' => $nama,
-				'no_hp' => $no_hp,
-				'no_wa' => $no_wa,
-				'email' => $email,
-				'pilkpa' => $pilkpa,
-				'pilstatuspegawai' => $pilstatuspegawai,
-				'tempat_tugas' => $tempat_tugas,
-				'tempat_lahir' => $tempat_lahir,
-				'tgl_lahir' => $tgl_lahir,
-				'pilpensiun' => $pilpensiun,
-				'password' => $password
+				'id_kos' => $id_kos,
+				'nama_kos' => $nama_kos,
+				'alamat_kos' => $alamat_kos,
+				'harga_bawah' => $harga_bawah,
+				'harga_atas' => $harga_atas,
+				'deskripsi' => $deskripsi
 			);
-			$query = $this->Meditdataakun->update($data,$kta);
+			$query = $this->Mkos->update($data,$id_kos);
 			if ($query>0) {
-				if (!empty($_FILES['ktp']['name'])) {
-					$filename = $_FILES['ktp']['name'];
+				if (!empty($_FILES['foto_kos']['name'])) {
+					$filename = $_FILES['foto_kos']['name'];
 					$ext = pathinfo($filename, PATHINFO_EXTENSION);
 					$config['allowed_types'] = 'jpg|jpeg';
 					$config['overwrite'] = true;
-					$config['upload_path'] = 'assets/gambar_upload/scanktp/';
-					$config['file_name'] = $kta.'_ktp.'.$ext;
+					$config['upload_path'] = 'assets/gambar_upload/fotokos/';
+					$config['file_name'] = $id_kos.'_kos.'.$ext;
 					$config['max_size'] = 2000;
 
 					$this->upload->initialize($config);
 
-					if ($this->upload->do_upload('ktp')){
-						$ktp = $config['upload_path'].$this->upload->data('file_name');
+					if ($this->upload->do_upload('foto_kos')){
+						$foto_kos = $config['upload_path'].$this->upload->data('file_name');
 						$data = array(
-							'scan_ktp' => $ktp
+							'foto_kos' => $foto_kos
 						);
-						$this->Meditdataakun->update($data,$kta);
-						$errorfile = "";
+						$this->Mkos->update($data,$id_kos);
 					} else {
-						$errorfile = "Input gambar KTP gagal!";
+						$errorfile = "Input Foto Kos gagal!";
 					}
-				} else {
-					$errorfile = "";
 				}
-				if (!empty($_FILES['profil']['name'])) {
-					$filename = $_FILES['profil']['name'];
-					$ext = pathinfo($filename, PATHINFO_EXTENSION);
-					$config['allowed_types'] = 'jpg|jpeg';
-					$config['overwrite'] = true;
-					$config['upload_path'] = 'assets/gambar_upload/profil/';
-					$config['file_name'] = $kta.'_profil.'.$ext;
-					$config['max_size'] = 2000;
+				// ========================================
 
-					$this->upload->initialize($config);
-
-					if ($this->upload->do_upload('profil')){
-						$profil = $config['upload_path'].$this->upload->data('file_name');
-						$data = array(
-							'gambar_profil' => $profil
-						);
-						$this->Meditdataakun->update($data,$kta);
-						$errorfile2 = "";
-
-						$configr['image_library'] = 'gd2';
-						$configr['source_image'] = $profil;
-						$configr['maintain_ratio'] = FALSE;
-						$configr['width']         = 100;
-						$configr['height']       = 100;
-
-						$this->load->library('image_lib', $configr);
-
-						$this->image_lib->resize();
-						if ($this->input->post('KTA') == $this->session->userdata('KTA')) {
-							$_SESSION['gambar_profil'] = $profil;
-						}
-					} else {
-						$errorfile2 = "Input gambar profil gagal!";
-					}
-				} else {
-					$errorfile2 = "";
-				}
-				if (isset($errorfile) || isset($errorfile2)) {
+				if (isset($errorfile) ) {
 					if ($this->session->userdata('level')=="admin") {
-						$this->edit($kta, $errorfile, $errorfile2);
+						$this->editdatakos($id_kos, $errorfile);
 					} else {
-						$this->index($errorfile, $errorfile2);
+						$this->editdatakos($id_kos,$errorfile);
 					}
 				} else {
 					if ($this->session->userdata('level')=="admin") {
-						redirect('Cdaftarakun','refresh');
+						redirect('Cdaftarkos','refresh');
 					}
 					else{
-						redirect('Ceditdataakun','refresh');
+						redirect('Cdaftarkos','refresh');
 					}	
 				}
+				// =====================================================
 			}else{
 				echo "gagal update";
 			}
-
-
 		}
 	}
 	public function datakosbaru()

@@ -17,7 +17,7 @@
 <body class="login-page" style="background-image: url(' <?php echo base_url('assets/img/bg.jpg')?>'); background-size: cover;">
     <div class="login-box" style="margin-top: 3%">
         <div class="login-logo">
-            <img class="login-box" src="<?php echo base_url('assets/img/logo.png') ?>">
+            <!-- <img class="login-box" src="<?php echo base_url('assets/img/logo.png') ?>"> -->
         </div><!-- /.login-logo -->
         <?php 
         if (isset($_SESSION['success'])) {

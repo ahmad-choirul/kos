@@ -4,7 +4,6 @@
 			<h1>Edit Data Kos</h1>
 		</div>
 	</div>
-	<?php $getdatakos = $datakos[0]; ?>
 </section>
 
 <!-- Main content -->
@@ -18,6 +17,7 @@
 					</div>
 					<!-- /.box-header -->
 					<!-- form start -->
+					<h3><?php echo($error1);  ?></h3>
 					<form role="form" method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo site_url('Cdaftarkos/updatedatakos'); ?>">
 						<div class="box-body">
 							<?php foreach($datakos as $u){ ?>
