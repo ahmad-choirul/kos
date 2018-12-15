@@ -2,8 +2,8 @@
 class Auth extends CI_Controller {
     function __construct() {
         parent::__construct();
-        $this->load->model(array('Mlogin'));
-        
+        $this->load->model(array('Mlogin','Mkos'));
+
     }
     function index() {
         if ($this->session->userdata('KTA')) {
@@ -15,7 +15,8 @@ class Auth extends CI_Controller {
             }
         }else{
 
-            $this->load->view('login');
+          $data['kos'] = $this->Mkos->getDataKos();
+          $this->load->view('login',$data);
         }
     }
     function proses() {
@@ -27,8 +28,8 @@ class Auth extends CI_Controller {
         );
         $cek = $this->Mlogin->cek_login("akun",$where)->num_rows();
         if($cek > 0){
-    
-         $result = $this->Mlogin->getLoginData($username,$password); 
+
+         $result = $this->Mlogin->getLoginData($username,$password);
          if ( $this->session->userdata('level') =="admin") {
             redirect('Cdashboardadmin');
         }

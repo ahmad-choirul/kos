@@ -7,7 +7,7 @@ class Mkos extends CI_Model {
 	public function __construct()
 	{
 		parent::__construct();
-		
+
 	}
 	public function getnextid()
 	{
@@ -21,7 +21,7 @@ class Mkos extends CI_Model {
 		$this->db->where('id_kos', $kta);
 		$query = $this->db->update('datakos',$data);
 		return $query;
-	}	
+	}
 	public function getalldata($number,$offset,$search=""){
 			$this->db->where('id_akun', $this->session->userdata('id_akun'));
 		return $query = $this->db->get('datakos',$number,$offset)->result();
@@ -59,6 +59,11 @@ public function add($data)
 			$this->db->or_like('nama', $search);
 		}
 		return $this->db->get('akun')->num_rows();
+	}
+	public function getDataKos()
+	{
+		$query = $this->db->get('datakos');
+		return $query->result();
 	}
 }
 

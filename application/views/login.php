@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="assets/bootstrap-4.1.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/style.css">
-  <link href="assets/iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap-4.1.3/css/bootstrap.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/style.css'); ?>">
+  <link href="<?php echo base_url('assets/iconic/font/css/open-iconic-bootstrap.css'); ?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/font-awesome-4.3.0/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css" />
 
   <title>Welcome Page</title>
@@ -236,19 +236,23 @@
 
   <div class="container container-card">
     <div class="row">
-      <?php for ($i=0; $i < 12; $i++) {
-
+      <?php foreach ($kos as $row): ?>
+      <?php
         echo '<div class="col-lg-3">';
         echo '<div class="card card-item">';
-        echo '<img class="card-img-top" src="assets/img/kos/6.jpg" alt="Card image cap">';
+        echo '<img class="card-img-top" src="'.$row->foto_kos.'" alt="Card image cap">';
         echo '<div class="card-body">';
-        echo '<h5 class="card-title">Card title</h5>';
-        echo '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>';
-        echo '<a href="#" class="btn btn-primary">Go somewhere</a>';
+        echo '<h5 class="card-title">'.$row->nama_kos.'</h5>';
+        echo '<p class="card-text"><span class="oi oi-map-marker"></span> '.$row->alamat_kos.' </p>';
+        echo '<p class="card-text"> Rp. '.$row->harga_bawah.' - '.$row->harga_atas.' </p>';
+        echo '<p class="card-text">'.$row->deskripsi.'</p>';
+        echo '<a href="#" class="btn btn-primary">Detail Kos</a>';
         echo '</div>';
         echo '</div>';
         echo '</div>';
-      } ?>
+
+       ?>
+      <?php endforeach; ?>
 
 
     </div>
