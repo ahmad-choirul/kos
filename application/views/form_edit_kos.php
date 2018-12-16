@@ -18,6 +18,9 @@
 					<!-- /.box-header -->
 					<!-- form start -->
 					<h3><?php echo($error1);  ?></h3>
+							<a href="<?= site_url('Cdaftarkos') ?>" style="color: white" class="btn btn-warning push-10 pull-right"><i
+								class="fa fa-backward"></i> Kembali</a>
+							<br>
 					<form role="form" method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo site_url('Cdaftarkos/updatedatakos'); ?>">
 						<div class="box-body">
 							<?php foreach($datakos as $u){ ?>

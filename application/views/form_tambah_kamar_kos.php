@@ -14,19 +14,28 @@
 			<div class="box box-primary row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="box-header with-border">
-						<h3 class="box-title">Form Pengajuan</h3>
+						<h3 class="box-title">Form Tamnah Data Kamar Kos</h3>
 					</div>
 					<!-- /.box-header -->
 					<!-- form start -->
-					<form role="form" method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo site_url('Cdaftarkos/datakosbaru'); ?>">
+									<?php foreach($datakos as $u){ ?>
+
+					<form role="form" method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo site_url('Cdaftarkos/datakamarkosbaru'); ?>">
 						<div class="box-body">
 							<div class="form-group">
-								<label for="nama_kos" class="col-sm-2 control-label">Nama Kos</label>
-								<div class="col-sm-10">
-									<input type="text" disabled class="form-control" placeholder="Masukkan Nama Kamar Kos" name="nama_kos" id="nama_kos" value="<?php echo set_value('$kamarkos[nama_kamar]');?>">
-									<b><?php echo form_error('$nama_kos'); ?></b>
-								</div>
-							</div>
+											<label for="nama_kos" class="col-sm-2 control-label">Nama Kos</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" placeholder="Masukkan Nama Kamar Kos" name="nama_kos" id="nama_kos" value="<?php echo $u->nama_kos?>">
+												<b><?php echo form_error('$nama_kos'); ?></b>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="id_kos" class="col-sm-2 control-label">id Kos</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" placeholder="Masukkan Nama Kamar Kos" name="id_kos" id="id_kos" value="<?php echo $u->id_kos?>">
+												<b><?php echo form_error('$id_kos'); ?></b>
+											</div>
+										</div>
 							<div class="form-group">
 								<label for="nama_kamar" class="col-sm-2 control-label">Nama Kamar Kos</label>
 								<div class="col-sm-10">
@@ -66,6 +75,7 @@
 					</div>
 					<!-- /.box-footer -->
 				</form>
+			<?php } ?>
 			</div>
 		</div>
 	</div>
