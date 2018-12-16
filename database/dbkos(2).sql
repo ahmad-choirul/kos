@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2018 at 08:33 AM
+-- Generation Time: Dec 16, 2018 at 03:59 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -89,15 +89,16 @@ CREATE TABLE `detail_kos` (
   `nama_kamar` varchar(30) NOT NULL,
   `harga` varchar(30) NOT NULL,
   `deskripsi` varchar(100) NOT NULL,
-  `foto` varchar(50) NOT NULL
+  `foto` varchar(50) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_kos`
 --
 
-INSERT INTO `detail_kos` (`id_detail_kos`, `id_kos`, `nama_kamar`, `harga`, `deskripsi`, `foto`) VALUES
-(1, 2, 'kamar 1', '200000', 'kamar mandi dalam', '');
+INSERT INTO `detail_kos` (`id_detail_kos`, `id_kos`, `nama_kamar`, `harga`, `deskripsi`, `foto`, `status`) VALUES
+(1, 2, 'kamar pertama', '200000', 'deskripsi', '', 1);
 
 -- --------------------------------------------------------
 
