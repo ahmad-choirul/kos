@@ -17,9 +17,25 @@ class Mkos extends CI_Model {
 		$this->db->where('TABLE_NAME', 'datakos');
 		return $this->db->get()->row();
 	}
-	public function update($data,$kta){
-		$this->db->where('id_kos', $kta);
+	public function detidkosbyidkamar($id_detail_kos)
+	{
+		$this->db->select('id_kos as id');
+		$this->db->where('id_detail_kos', $id_detail_kos);
+		return $this->db->get('detail_kos')->result_array()[0]['id'];
+	}
+	public function update($data,$id){
+		$this->db->where('id_kos', $id);
 		$query = $this->db->update('datakos',$data);
+		return $query;
+	}
+	public function updatestatuskamar($data,$id){
+		$this->db->where('id_detail_kos', $id);
+		$query = $this->db->update('detail_kos',$data);
+		return $query;
+	}
+	public function updatekamar($data,$kta){
+		$this->db->where('id_detail_kos', $kta);
+		$query = $this->db->update('detail_kos',$data);
 		return $query;
 	}
 	public function getalldata($number,$offset,$search=""){
@@ -29,7 +45,13 @@ class Mkos extends CI_Model {
 	public function getdatadetailkos($id_kos)
 	{
 		$this->db->where('id_kos', $id_kos);
-		return $this->db->get('detail_kos');
+		return $this->db->get('detail_kos')->result();
+	}
+	public function getdatakamarkos($id_detail_kos)
+	{
+		$this->db->where('id_detail_kos', $id_detail_kos);
+		$this->db->join('datakos', 'datakos.id_kos = detail_kos.id_kos', 'left');
+		return $this->db->get('detail_kos')->result();
 	}
 	public function getdatakosbyid($id_kos)
 	{

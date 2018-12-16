@@ -23,29 +23,22 @@
 							<div class="form-group">
 								<label for="nama_kos" class="col-sm-2 control-label">Nama Kos</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" placeholder="Masukkan Nama Kos" name="nama_kos" id="nama_kos" value="<?php echo set_value('nama_kos');?>">
-									<b><?php echo form_error('nama_kos'); ?></b>
+									<input type="text" disabled class="form-control" placeholder="Masukkan Nama Kamar Kos" name="nama_kos" id="nama_kos" value="<?php echo set_value('$kamarkos[nama_kamar]');?>">
+									<b><?php echo form_error('$nama_kos'); ?></b>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="alamat_kos" class="col-sm-2 control-label">Alamat Kos</label>
+								<label for="nama_kamar" class="col-sm-2 control-label">Nama Kamar Kos</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" placeholder="Masukkan Alamat Kos" name="alamat_kos" id="alamat_kos" value="<?php echo set_value('alamat_kos');?>">
-									<b><?php echo form_error('alamat_kos'); ?></b>
+									<input type="text" class="form-control" placeholder="Masukkan Nama Kamar Kos" name="nama_kamar" id="nama_kamar" value="<?php echo set_value('nama_kamar');?>">
+									<b><?php echo form_error('nama_kamar'); ?></b>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="harga_bawah" class="col-sm-2 control-label">Harga Bawah</label>
+								<label for="harga" class="col-sm-2 control-label">Harga</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" placeholder="Masukkan Harga Kamar Kos Termurah" name="harga_bawah" id="harga_bawah" value="<?php echo set_value('harga_bawah');?>">
-									<b><?php echo form_error('harga_bawah'); ?></b>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="harga_atas" class="col-sm-2 control-label">Harga Atas</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" placeholder="Masukkan Harga Kamar Kos Termahal" name="harga_atas" id="harga_atas" value="<?php echo set_value('harga_atas');?>">
-									<b><?php echo form_error('harga_atas'); ?></b>
+									<input type="text" class="form-control" placeholder="Masukkan Harga Kamar Kos" name="harga" id="harga" value="<?php echo set_value('harga');?>">
+									<b><?php echo form_error('harga'); ?></b>
 								</div>
 							</div>
 							<div class="form-group">
@@ -57,9 +50,9 @@
 							</div>
 							
 							<div class="form-group">
-								<label for="foto_kos" class="col-sm-2 control-label">Foto Kos</label>
+								<label for="foto_kamar_kos" class="col-sm-2 control-label">Foto Kamar Kos</label>
 								<div class="col-sm-10">
-									<input type="file" name="foto_kos" id="foto_kos" accept=".jpg, .jpeg">
+									<input type="file" name="foto_kamar_kos" id="foto_kamar_kos" accept=".jpg, .jpeg">
 									<small>(max 2mb)</small>
 									<br>
 									<small>foto kos anda dengan jelas</small>

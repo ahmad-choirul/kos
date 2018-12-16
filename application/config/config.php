@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$config['base_url'] = 'http://192.168.1.33/koperasikemenag/';
 $config['base_url'] = 'http://localhost/kos/';
+// $config['base_url'] = 'http://231afbd9.ngrok.io/kos/';
 
 
 /*

@@ -9,8 +9,8 @@
 			<span class="icon"> <i class="icon-th"></i> </span>
 			<h5>Tabel Daftar kamar kos</h5>
 		</div>
-		<a href="Cdaftarkos/tambahdatakos">
-		<button type="button" class="btn btn-success" >Tambah Data kamar Kos</button>
+		<a href="<?= site_url('Cdaftarkos/tambahdatakamarkos')?>">
+			<button type="button" class="btn btn-success" >Tambah Data kamar Kos</button>
 		</a>
 		<form method="post" action="<?php echo site_url('Cpinjaman/index'); ?>">
 			<div class="row">
@@ -31,7 +31,7 @@
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
-					<th>ID kamar Kos</th>
+						<th>ID kamar Kos</th>
 						<th>Nama Kamar</th>
 						<th>Harga</th>
 						<th>Deskripso</th>
@@ -52,10 +52,20 @@
 								<a target="_blank" rel="noopener noreferrer" href="<?php echo $get->foto; ?>"><img src="<?php echo site_url($get->foto); ?>" height='30'></a>
 							</td>
 							<td>
-								<a href="Cdaftarkos/editdatakamarkos/<?php echo $get->id_detail_kos; ?>">
+								<?php if ($get->status=='1') {
+									?>
+									<a href="<?= site_url('Cdaftarkos/editstatuskamarkos/0/').$get->id_detail_kos; ?>">
+										<button type="button" class="btn btn-danger btn-block"><span class="fa fa-file-text-o"> kosong</span></button>
+									</a>
+								<?php } else {?>
+									<a href="<?= site_url('Cdaftarkos/editstatuskamarkos/1/').$get->id_detail_kos; ?>">
+										<button type="button" class="btn btn-primary btn-block"><span class="fa fa-file-text-o"> terisi</span></button>
+									</a>
+								<?php } ?>
+								<a href="<?= site_url('Cdaftarkos/editdatakamarkos/').$get->id_detail_kos; ?>">
 									<button type="button" class="btn btn-success btn-block"><span class="fa fa-file-text-o"> Edit</span></button>
 								</a>
-								<a href="Cdaftarkos/hapuskamarkos/<?php echo $get->id_detail_kos; ?>">
+								<a href="<?= site_url('Cdaftarkos/hapuskamarkos/').$get->id_detail_kos; ?>">
 									<button type="button" class="btn btn-primary btn-block"><span class="fa fa-file-text-o"> hapus</span></button>
 								</a>
 							</td>

@@ -105,21 +105,21 @@
             ?>
 
             <div class="form-group">
-              <label class="sr-only" for="password">Username</label>
+              <label class="sr-only" for="password"></label>
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <div class="input-group-text"><span class="oi oi-person form-control-feedback"></span></span></div>
                 </div>
-                <input type="text" name="username" class="form-control" placeholder="Username" oninput="myFunction()" id="username"/>
+                <input type="text" name="username" class="form-control" placeholder="Username atau Email"  id="username"/>
               </div>
             </div>
             <div class="form-group">
-              <label class="sr-only" for="password">Username</label>
+              <label class="sr-only" for="password"></label>
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <div class="input-group-text"><span class="oi oi-lock-locked form-control-feedback"></span></div>
                 </div>
-                <input type="password" class="form-control" name="password"  oninput="myFunction()" id="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
               </div>
             </div>
           </div>
