@@ -175,10 +175,10 @@ class Cdaftarkos extends CI_Controller {
 					}
 				} else {
 					if ($this->session->userdata('level')=="admin") {
-						redirect('Cdaftarkos','refresh');
+						$this->editdatakos($id_kos);
 					}
 					else{
-						redirect('Cdaftarkos','refresh');
+						$this->editdatakos($id_kos);
 					}	
 				}
 				// =====================================================
@@ -241,8 +241,8 @@ class Cdaftarkos extends CI_Controller {
 			);
 			$query = $this->Mkos->updatekamar($data,$id_detail_kos);
 			if ($query>0) {
-				if (!empty($_FILES['foto_kamar_kos']['name'])) {
-					$filename = $_FILES['foto_kamar_kos']['name'];
+				if (!empty($_FILES['foto']['name'])) {
+					$filename = $_FILES['foto']['name'];
 					$ext = pathinfo($filename, PATHINFO_EXTENSION);
 					$config['allowed_types'] = 'jpg|jpeg';
 					$config['overwrite'] = true;
@@ -252,11 +252,12 @@ class Cdaftarkos extends CI_Controller {
 
 					$this->upload->initialize($config);
 
-					if ($this->upload->do_upload('foto_kamar_kos')){
-						$foto_kamar_kos = $config['upload_path'].$this->upload->data('file_name');
+					if ($this->upload->do_upload('foto')){
+						$foto = $config['upload_path'].$this->upload->data('file_name');
 						$data = array(
-							'foto_kamar_kos' => $foto_kamar_kos
+							'foto' => $foto
 						);
+
 						$this->Mkos->updatekamar($data,$id_detail_kos);
 					} else {
 						$errorfile = "Input Foto Kos gagal!";
@@ -266,21 +267,21 @@ class Cdaftarkos extends CI_Controller {
 
 				if (isset($errorfile) ) {
 					if ($this->session->userdata('level')=="admin") {
-						$this->editdatakos($id_detail_kos, $errorfile);
+						$this->editdatakamarkos($id_detail_kos,$errorfile);
 					} else {
 						$this->editdatakamarkos($id_detail_kos,$errorfile);
 					}
 				} else {
 					if ($this->session->userdata('level')=="admin") {
-						redirect('Cdaftarkos','refresh');
+						$this->editdatakamarkos($id_detail_kos);
 					}
 					else{
-						redirect('Cdaftarkos','refresh');
+						$this->editdatakamarkos($id_detail_kos);
 					}	
 				}
 				// =====================================================
 			}else{
-				echo "gagal update";
+				// echo "gagal update";
 			}
 		}
 	}

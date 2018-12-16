@@ -18,6 +18,9 @@
 					</div>
 					<!-- /.box-header -->
 					<!-- form start -->
+					<a href="<?= site_url('Cdaftarkos') ?>" style="color: white" class="btn btn-warning push-10 pull-right"><i
+								class="fa fa-backward"></i> Kembali</a>
+							<br>
 					<form role="form" method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo site_url('Cdaftarkos/datakosbaru'); ?>">
 						<div class="box-body">
 							<div class="form-group">
