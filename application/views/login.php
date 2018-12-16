@@ -210,7 +210,7 @@
     <div class="carousel-inner">
       <div class="content">
         <span class="judul"> Mau Cari Kos Kosan? <br></span>
-        <span class="sub-judul">Dapatkan Info Kost Murah, Kost Harian, Kost Bebas dan Info Kosan lainnya di Mamikos! <br></span>
+        <span class="sub-judul">Dapatkan Info Kost Murah, Kost Harian,Kost Gratis, Kost Bebas dan Info Kosan lainnya di KOS-KOSAN! <br></span>
         <form class="" action="index.html" method="post">
           <div class="form-row justify-content-center" style="margin-top:20px;">
             <div class="col-lg-3">
