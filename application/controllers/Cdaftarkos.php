@@ -94,7 +94,7 @@ class Cdaftarkos extends CI_Controller {
 	}
 	public function tambahdatakos()
 	{				
-		$data['judul']= "akun anggota";
+		$data['judul']= "Tambah Data Kos";
 		$this->load->view('template/head',$data);
 		$this->load->view('template/topbar');
 		$this->load->view('template/sidebaruser');
@@ -102,9 +102,10 @@ class Cdaftarkos extends CI_Controller {
 		$this->load->view('template/js');
 		$this->load->view('template/foot');
 	}
-	public function tambahdatakamarkos()
+	public function tambahdatakamarkos($id_kos)
 	{				
-		$data['judul']= "akun anggota";
+		$data['datakos'] = $this->Mkos->getdatakosbyid($id_kos);
+		$data['judul']= "Tambah Data Kamar Kos";
 		$this->load->view('template/head',$data);
 		$this->load->view('template/topbar');
 		$this->load->view('template/sidebaruser');
@@ -350,12 +351,69 @@ class Cdaftarkos extends CI_Controller {
 				}
 			}
 		}}
-		
-		function checkdateformat($date) {
-			$d = DateTime::createFromFormat('Y-m-d', $date);
-			if ($d == FALSE) {
-				$this->form_validation->set_message('checkdateformat', 'Format tanggal salah!');
-			}
-			return $d && $d->format('Y-m-d') === $date;
-		} 
-	}
+		public function datakamarkosbaru()
+		{
+
+			$this->form_validation->set_rules('nama_kamar', 'nama_kamar', 'required');
+			$this->form_validation->set_rules('harga', 'harga', 'required|alpha_dash|numeric');
+			$this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
+			$this->form_validation->set_message('required', 'Wajib diisi!');
+			$this->form_validation->set_message('alpha_dash', 'Tidak boleh mengandung spasi!');
+			$this->form_validation->set_message('numeric', 'Hanya boleh diisi angka!');
+
+			if ($this->form_validation->run() == FALSE) {
+				$data['judul'] = "Pengajuan kamar kos baru";
+				$data['errorfile']= "";
+				$this->load->view('template/head',$data);
+				$this->load->view('template/topbar');
+				$this->load->view('template/sidebaruser');
+				$this->load->view('form_tambah_kamar_kos',$data);
+				$this->load->view('template/js');
+				$this->load->view('template/foot');
+			} else {
+				$result = (array) $this->Mkos->getnextid();
+				$id = $result["AUTO_INCREMENT"];
+				$nama_kamar = $this->input->post('nama_kamar');
+				$id_kos = $this->input->post('id_kos');
+				$harga = $this->input->post('harga');
+				$deskripsi = $this->input->post('deskripsi');
+				$foto_kamar_kos = $this->input->post('foto_kamar_kos');
+
+
+				$config['allowed_types'] = 'jpg|jpeg';
+				$config['overwrite'] = true;
+				$config['upload_path'] = 'assets/gambar_upload/fotokamarkos/';
+				$config['file_name'] = $id.'_kamar_kos';
+				$config['max_size'] = 2000;
+
+				$this->upload->initialize($config);
+				if ($this->upload->do_upload('foto_kamar_kos')) {
+					$foto_kamar_kos = $config['upload_path'].$this->upload->data('file_name');
+
+					$data = array(
+						'id_kos' 		=> $id_kos,
+						'nama_kamar' 		=> $nama_kamar,
+						'harga' 	=> $harga,
+						'deskripsi' 	=> $deskripsi,
+						'foto' 		=> $foto_kamar_kos
+
+					);
+					if ($this->Mkos->addkamar($data)) {
+						$this->session->set_userdata('success','Penambahan data Kamar kos telah terkirim.');
+						redirect('Cdaftarkos', 'refresh');
+					} else {
+						$data['judul'] = "Pengajuan";
+						$data['errorfile']= "Input file gagal!";
+						$this->view($data);
+						unlink($fotokos);
+					}
+				}
+			}}
+			function checkdateformat($date) {
+				$d = DateTime::createFromFormat('Y-m-d', $date);
+				if ($d == FALSE) {
+					$this->form_validation->set_message('checkdateformat', 'Format tanggal salah!');
+				}
+				return $d && $d->format('Y-m-d') === $date;
+			} 
+		}

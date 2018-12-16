@@ -9,9 +9,14 @@
 			<span class="icon"> <i class="icon-th"></i> </span>
 			<h5>Tabel Daftar kamar kos</h5>
 		</div>
-		<a href="<?= site_url('Cdaftarkos/tambahdatakamarkos')?>">
+		<!-- <a href="<?= site_url('Cdaftarkos/tambahdatakamarkos')?>">
 			<button type="button" class="btn btn-success" >Tambah Data kamar Kos</button>
-		</a>
+		</a> -->
+		<?php $last = $this->uri->total_segments();
+$record_num = $this->uri->segment($last); ?>
+		<a href="<?= site_url('Cdaftarkos/tambahdatakamarkos/').$record_num ?>" style="color: white" class="btn btn-primary push-10 pull-left"><i
+								class="fa fa-plus"></i>Tambah Data kamar Kos</a>
+							<br>
 		<form method="post" action="<?php echo site_url('Cpinjaman/index'); ?>">
 			<div class="row">
 				<div class="col-md-3 pull-right">

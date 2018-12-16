@@ -9,6 +9,7 @@
 			<span class="icon"> <i class="icon-th"></i> </span>
 			<h5>Tabel Daftar Pinjaman</h5>
 		</div>
+		<?php  ?>
 		<a href="Cdaftarkos/tambahdatakos">
 		<button type="button" class="btn btn-success" >Tambah Data Kos</button>
 		</a>

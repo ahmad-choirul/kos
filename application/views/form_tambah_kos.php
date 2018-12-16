@@ -21,12 +21,14 @@
 					<a href="<?= site_url('Cdaftarkos') ?>" style="color: white" class="btn btn-warning push-10 pull-right"><i
 								class="fa fa-backward"></i> Kembali</a>
 							<br>
+									<?php foreach($datakos as $u){ ?>
+
 					<form role="form" method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo site_url('Cdaftarkos/datakosbaru'); ?>">
 						<div class="box-body">
 							<div class="form-group">
 								<label for="nama_kos" class="col-sm-2 control-label">Nama Kos</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" placeholder="Masukkan Nama Kos" name="nama_kos" id="nama_kos" value="<?php echo set_value('nama_kos');?>">
+									<input type="text" class="form-control" placeholder="Masukkan Nama Kos" name="nama_kos" id="nama_kos" value="<?php echo $u->nama_kos?>">
 									<b><?php echo form_error('nama_kos'); ?></b>
 								</div>
 							</div>
@@ -76,6 +78,7 @@
 					</div>
 					<!-- /.box-footer -->
 				</form>
+			<?php } ?>
 			</div>
 		</div>
 	</div>

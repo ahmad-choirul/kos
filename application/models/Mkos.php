@@ -63,6 +63,11 @@ public function add($data)
 		$insert = $this->db->insert('datakos', $data);
 		return $data;
 	}
+	public function addkamar($data)
+	{
+		$insert = $this->db->insert('detail_kos', $data);
+		return $data;
+	}
 	public function editstatus($id)
 	{
 		$update_data=array("status"=>2);
