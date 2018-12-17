@@ -5,7 +5,7 @@ class Ckos extends CI_Controller {
         $this->load->model(array('Mkos'));
 
     }
-    function index() {
+    function detail($id_kos) {
         if ($this->session->userdata('KTA')) {
             if ($this->session->userdata('level')=="admin") {
                 redirect('Cdashboardadmin');
@@ -15,7 +15,9 @@ class Ckos extends CI_Controller {
             }
         }else{
 
-          $data['kos'] = $this->Mkos->getDataKos();
+          $data['detail_kos'] = $this->Mkos->getdatakosbyid($id_kos);
+          $data['akun'] = $this->Mkos->getPemilik($id_kos);
+          $data['data_kamar'] = $this->Mkos->getdatadetailkos($id_kos);
           $this->load->view('detailkos',$data);
         }
     }

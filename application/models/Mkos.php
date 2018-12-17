@@ -92,6 +92,14 @@ public function add($data)
 		$query = $this->db->get('datakos');
 		return $query->result();
 	}
+	
+	public function getPemilik($id_kos)
+	{
+		$this->db->where('id_kos', $id_kos);
+		$this->db->join('datakos', 'datakos.id_akun = akun.id_akun', 'left');
+		return $this->db->get('akun')->result();
+	}
+
 }
 
 /* End of file Mpermohonan.php */
