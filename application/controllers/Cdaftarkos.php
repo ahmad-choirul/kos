@@ -35,9 +35,9 @@ class Cdaftarkos extends CI_Controller {
 		$this->load->view('template/js');
 		$this->load->view('template/foot');
 	}
-	
+
 	public function indexuser()
-	{				
+	{
 		$this->load->library('pagination');
 		$this->load->library('session');
 		if ($this->uri->segment(2)!='index') {
@@ -93,7 +93,7 @@ class Cdaftarkos extends CI_Controller {
 		$this->load->view('template/foot');
 	}
 	public function tambahdatakos()
-	{				
+	{
 		$data['judul']= "Tambah Data Kos";
 		$this->load->view('template/head',$data);
 		$this->load->view('template/topbar');
@@ -103,7 +103,7 @@ class Cdaftarkos extends CI_Controller {
 		$this->load->view('template/foot');
 	}
 	public function tambahdatakamarkos($id_kos)
-	{				
+	{
 		$data['datakos'] = $this->Mkos->getdatakosbyid($id_kos);
 		$data['judul']= "Tambah Data Kamar Kos";
 		$this->load->view('template/head',$data);
@@ -180,7 +180,7 @@ class Cdaftarkos extends CI_Controller {
 					}
 					else{
 						$this->editdatakos($id_kos);
-					}	
+					}
 				}
 				// =====================================================
 			}else{
@@ -189,7 +189,7 @@ class Cdaftarkos extends CI_Controller {
 		}
 	}
 	public function editstatuskamarkos($stat,$id_detail_kos)
-	{	
+	{
 		$data = array(
 			'status' => $stat
 		);
@@ -278,7 +278,7 @@ class Cdaftarkos extends CI_Controller {
 					}
 					else{
 						$this->editdatakamarkos($id_detail_kos);
-					}	
+					}
 				}
 				// =====================================================
 			}else{
@@ -288,7 +288,7 @@ class Cdaftarkos extends CI_Controller {
 	}
 	public function datakosbaru()
 	{
-		
+
 		$this->form_validation->set_rules('harga_atas', 'harga_atas', 'required|alpha_dash|numeric');
 		$this->form_validation->set_rules('harga_bawah', 'harga_bawah', 'required|alpha_dash|numeric');
 		$this->form_validation->set_rules('nama_kos', 'nama_kos', 'required');
@@ -317,7 +317,7 @@ class Cdaftarkos extends CI_Controller {
 			$harga_atas = $this->input->post('harga_atas');
 			$deskripsi = $this->input->post('deskripsi');
 			$foto_kos = $this->input->post('foto_kos');
-			
+
 
 			$config['allowed_types'] = 'jpg|jpeg';
 			$config['overwrite'] = true;
@@ -338,7 +338,7 @@ class Cdaftarkos extends CI_Controller {
 					'harga_atas' 	=> $harga_atas,
 					'deskripsi' 	=> $deskripsi,
 					'foto_kos' 		=> $foto_kos
-					
+
 				);
 				if ($this->Mkos->add($data)) {
 					$this->session->set_userdata('success','Penambahan data kos telah terkirim. Silahkan isi deskripsi kamar kos');
@@ -415,5 +415,5 @@ class Cdaftarkos extends CI_Controller {
 					$this->form_validation->set_message('checkdateformat', 'Format tanggal salah!');
 				}
 				return $d && $d->format('Y-m-d') === $date;
-			} 
+			}
 		}

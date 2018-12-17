@@ -21,9 +21,13 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="" action="<?php echo site_url('Ckos/cari');  ?>" method="post">
 
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary offset-md-10" style="margin-right: 10px;" data-toggle="modal" data-target="#modalLogin">
+        <input class="form-control offset-md-7 col-md-2 col-8" type="text" name="kata" style="margin-right:10px;" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" style="margin-right:10px;" type="submit">Search</button>
+      </form>
+      <!-- </form> -->
+      <button type="button" class="btn btn-primary " style="margin-right: 10px;" data-toggle="modal" data-target="#modalLogin">
         Masuk
       </button>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDaftar">
@@ -166,7 +170,7 @@
               <label for="nama">Password lagi</label>
               <input class="form-control" id="password1" name="password1" placeholder="Masukan Password lagi" type="password" onkeyup='check();'>
               <b><?php echo form_error('password1'); ?></b>
-                <span id='message'></span>
+              <span id='message'></span>
             </div>
             <div class="form-group">
               <label for="no_wa">No WA</label>
@@ -195,80 +199,50 @@
               <b><p class="text-danger" size="20"></p></b>
             </div>
 
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-              <button type="submit" class="btn btn-primary">Daftar</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="carousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="content">
-        <span class="judul"> Mau Cari Kos Kosan? <br></span>
-        <span class="sub-judul">Dapatkan Info Kost Murah, Kost Harian,Kost Gratis, Kost Bebas dan Info Kosan lainnya di KOS-KOSAN! <br></span>
-        <form class="" action="<?php echo site_url('Ckos/cari')?>" method="post">
-          <div class="form-row justify-content-center" style="margin-top:20px;">
-
-            <div class="col-lg-3">
-              <input type="text" name="kata" value="" class="form-control" placeholder="Kecamatan">
-            </div>
-            <div class="col-lg-1">
-              <input type="submit" class="btn btn-primary" name="" value="Cari Sekarang">
-            </div>
-          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Daftar</button>
           </div>
         </form>
       </div>
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="assets/img/kos/1.jpg" alt="First slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="assets/img/kos/2.jpg" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="assets/img/kos/4.jpg" alt="Third slide">
-      </div>
     </div>
   </div>
+</div>
 
-  <div class="container container-card">
-    <div class="row">
-      <?php foreach ($kos as $row): ?>
+<div class="container container-card">
+  <div class="row">
+    <?php foreach ($kos as $row): ?>
       <?php
-        echo '<div class="col-lg-3">';
-        echo '<div class="card card-item">';
-        echo '<img class="card-img-top" src="'.$row->foto_kos.'" alt="Card image cap">';
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title">'.$row->nama_kos.'</h5>';
-        echo '<p class="card-text"><span class="oi oi-map-marker"></span> '.$row->alamat_kos.' </p>';
-        echo '<p class="card-text"> Rp. '.$row->harga_bawah.' - '.$row->harga_atas.' </p>';
-        echo '<p class="card-text">'.$row->deskripsi.'</p>';
-        echo '<a href="'. base_url('Ckos/detail/'.$row->id_kos).'" class="btn btn-primary">Detail Kos</a>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
+      echo '<div class="col-lg-3">';
+      echo '<div class="card card-item">';
+      echo '<img class="card-img-top" src="'.base_url($row->foto_kos).'" alt="Card image cap">';
+      echo '<div class="card-body">';
+      echo '<h5 class="card-title">'.$row->nama_kos.'</h5>';
+      echo '<p class="card-text"><span class="oi oi-map-marker"></span> '.$row->alamat_kos.' </p>';
+      echo '<p class="card-text"> Rp. '.$row->harga_bawah.' - '.$row->harga_atas.' </p>';
+      echo '<p class="card-text">'.$row->deskripsi.'</p>';
+      echo '<a href="'. base_url('Ckos/detail/'.$row->id_kos).'" class="btn btn-primary">Detail Kos</a>';
+      echo '</div>';
+      echo '</div>';
+      echo '</div>';
 
-       ?>
-      <?php endforeach; ?>
+      ?>
+    <?php endforeach; ?>
 
 
-    </div>
   </div>
+</div>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="<?php echo base_url('assets/bootstrap-4.1.3/js/jquery-3.3.1.min.js') ?>"></script>
-  <script src="<?php echo base_url('assets/bootstrap-4.1.3/js/popper.min.js') ?>"></script>
-  <script src="<?php echo base_url('assets/bootstrap-4.1.3/js/bootstrap.min.js') ?>"></script>
-  <script>
-  $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-  })
-  </script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="<?php echo base_url('assets/bootstrap-4.1.3/js/jquery-3.3.1.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/bootstrap-4.1.3/js/popper.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/bootstrap-4.1.3/js/bootstrap.min.js') ?>"></script>
+<script>
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
 </body>
 </html>

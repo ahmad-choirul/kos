@@ -21,5 +21,11 @@ class Ckos extends CI_Controller {
           $this->load->view('detailkos',$data);
         }
     }
+    public function cari()
+    {
+        $kata = $this->input->post('kata');
+        $data['kos'] = $this->Mkos->pencarian($kata);
+        $this->load->view('pencarian',$data);
+    }
 
 }

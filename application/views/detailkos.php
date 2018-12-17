@@ -21,10 +21,9 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <input class="form-control offset-md-7 col-md-2 col-8" type="text" name="kata" style="margin-right:10px;" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" style="margin-right:10px;" type="submit">Search</button>
 
-      <input class="form-control offset-md-7 col-md-2 col-8" type="search" style="margin-right:10px;" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-primary" style="margin-right:10px;" type="submit">Search</button>
-      <!-- </form> -->
       <button type="button" class="btn btn-primary " style="margin-right: 10px;" data-toggle="modal" data-target="#modalLogin">
         Masuk
       </button>
@@ -238,65 +237,78 @@
 <div class="container">
   <br>
   <div class="row">
-    <table class="table col-md-8">
-      <?php foreach ($detail_kos as $kos) : ?>
-      <thead>
-        <tr>
-          <th scope="col">Detail Kos</th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope='row'>Nama Kos</th>
-          <td><?php echo $kos->nama_kos; ?></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope='row'>Alamat Kos</th>
-          <td><?php echo $kos->alamat_kos; ?></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope='row'>Luas Kamar</th>
-          <td>3 x 4</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope='row'>Fasilitas</th>
-          <td>Kamar mandi dalam</td>
-          <td>Tv dalam</td>
-          <td>AC</td>
-          <td>Dapur bersama</td>
-        </tr>
-        <tr>
-          <th scope='row'>Fasilitas Parkir</th>
-          <td>Mobil</td>
-          <td>Sepeda</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope='row'>Deskripsi Kos</th>
-          <td>
-            <?php echo $kos->deskripsi; ?>
-          </td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-      <?php endforeach; ?>
-    </table>
+    <div class="table-responsive col-md-8">
+      <table class="table ">
+        <?php foreach ($detail_kos as $kos) : ?>
+          <thead>
+            <tr>
+              <th scope="col">Detail Kos</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope='row'>Nama Kos</th>
+              <td><?php echo $kos->nama_kos; ?></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope='row'>Alamat Kos</th>
+              <td><?php echo $kos->alamat_kos; ?></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope='row'>Luas Kamar</th>
+              <td>3 x 4</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope='row'>Fasilitas</th>
+              <td>Kamar mandi dalam</td>
+              <td>Tv dalam</td>
+              <td>AC</td>
+              <td>AC</td>
+              <td>AC</td>
+              <td>AC</td>
+              <td>AC</td>
+              <br>
+              <br>
+              <td>Dapur bersama</td>
+              <td>Dapur bersama</td>
+              <td>Dapur bersama</td>
+              <td>Dapur bersama</td>
+              <td>Dapur bersama</td>
+            </tr>
+            <tr>
+              <th scope='row'>Fasilitas Parkir</th>
+              <td>Mobil</td>
+              <td>Sepeda</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope='row'>Deskripsi Kos</th>
+              <td>
+                <?php echo $kos->deskripsi; ?>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        <?php endforeach; ?>
+      </table>
+
+    </div>
     <div class="col-md-4">
       <div class="card">
         <div class="card-header text-center">
