@@ -44,6 +44,13 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label for="luas_kamar" class="col-sm-2 control-label">Luas Kamar Kos</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" placeholder="Masukkan Luas Kamar Kos" name="luas_kamar" id="luas_kamar" value="<?php echo set_value('luas_kamar');?>">
+									<b><?php echo form_error('luas_kamar'); ?></b>
+								</div>
+							</div>
+							<div class="form-group">
 								<label for="harga" class="col-sm-2 control-label">Harga</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" placeholder="Masukkan Harga Kamar Kos" name="harga" id="harga" value="<?php echo set_value('harga');?>">
@@ -51,10 +58,10 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="deskripsi" class="col-sm-2 control-label">Deskripsi</label>
+								<label for="deskripsi_kamar" class="col-sm-2 control-label">Deskripsi</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" placeholder="Masukkan Deskripsi Kos anda" name="deskripsi" id="deskripsi" value="<?php echo set_value('deskripsi');?>">
-									<b><?php echo form_error('deskripsi'); ?></b>
+									<input type="text" class="form-control" placeholder="Masukkan Deskripsi Kos anda" name="deskripsi_kamar" id="deskripsi_kamar" value="<?php echo set_value('deskripsi');?>">
+									<b><?php echo form_error('deskripsi_kamar'); ?></b>
 								</div>
 							</div>
 							

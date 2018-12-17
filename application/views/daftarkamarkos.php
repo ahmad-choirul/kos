@@ -52,9 +52,9 @@ $record_num = $this->uri->segment($last); ?>
 							<td><?php echo $get->id_detail_kos; ?></td>
 							<td><?php echo $get->nama_kamar; ?></td>
 							<td><?php echo $get->harga; ?></td>
-							<td><?php echo $get->deskripsi; ?></td>	
+							<td><?php echo $get->deskripsi_kamar; ?></td>	
 							<td>
-								<a target="_blank" rel="noopener noreferrer" href="<?php echo $get->foto; ?>"><img src="<?php echo site_url($get->foto); ?>" height='30'></a>
+								<a target="_blank" rel="noopener noreferrer" href="<?php echo base_url($get->foto); ?>"><img src="<?php echo base_url($get->foto); ?>" height='30'></a>
 							</td>
 							<td>
 								<?php if ($get->status=='1') {

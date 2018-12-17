@@ -13,6 +13,7 @@
   <link href="<?php echo base_url('assets/ionicons-2.0.1/css/ionicons.min.css') ?>" rel="stylesheet" type="text/css" />
   <!-- Theme style -->
   <link href="<?php echo base_url('assets/adminlte/dist/css/AdminLTE.min.css') ?>" rel="stylesheet" type="text/css" />
+
         <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
          

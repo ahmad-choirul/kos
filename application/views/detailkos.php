@@ -237,6 +237,7 @@
 <div class="container">
   <br>
   <div class="row">
+<<<<<<< HEAD
     <div class="table-responsive col-md-8">
       <table class="table ">
         <?php foreach ($detail_kos as $kos) : ?>
@@ -317,55 +318,116 @@
         <div class="card-body">
           <table class="table">
             <?php foreach ($akun as $pemilik): ?>
+=======
+    <table class="table col-md-8">
+      <?php foreach ($detail_kos as $kos) : ?>
+        <thead>
+          <tr>
+            <th scope="col">Detail Kos</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope='row'>Nama Kos</th>
+            <td><?php echo $kos->nama_kos; ?></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope='row'>Alamat Kos</th>
+            <td><?php echo $kos->alamat_kos; ?></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
 
-              <tr>
-                <th scope="col">Nama Pemilik</th>
-                <td><?php echo $pemilik->nama; ?></td>
-              </tr>
-              <tr>
-                <th scope="col">Nomer Hp</th>
-                <td><?php echo $pemilik->no_wa; ?></td>
-              </tr>
-              <tr>
-                <th scope="col">Email</th>
-                <td><?php echo $pemilik->email; ?></td>
-              </tr>
-            <?php endforeach; ?>
-          </table>
-        </div>
+        <tr>
+          <th scope='row'>Fasilitas</th>
+        <?php
+        $str_arr = explode (",", $kos->deskripsi);    
+        foreach ($str_arr as $a) {
+        ?>
+          <td><?php echo($a) ?></td>
+        <?php } ?>
+        </tr>
+        <tr>
+          <th scope='row'>Parkir</th>
+        <?php
+        $str_arr = explode (",", $kos->parkir);    
+        foreach ($str_arr as $a) {
+        ?>
+          <td><?php echo($a) ?></td>
+        <?php } ?>
+        </tr>
+
+      </tbody>
+    <?php endforeach; ?>
+  </table>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header text-center">
+        Kontak
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <?php foreach ($akun as $pemilik): ?>
+>>>>>>> c1fc85deeca7ce56f983744201702e86c4991ec0
+
+            <tr>
+              <th scope="col">Nama Pemilik</th>
+              <td><?php echo $pemilik->nama; ?></td>
+            </tr>
+            <tr>
+              <th scope="col">Nomer Hp</th>
+              <td><?php echo $pemilik->no_wa; ?></td>
+            </tr>
+            <tr>
+              <th scope="col">Email</th>
+              <td><?php echo $pemilik->email; ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </table>
       </div>
     </div>
   </div>
-  <br>
-  <div class="row">
-    <table class="table">
-      <thead>
+</div>
+<br>
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nama Kamar</th>
+        <th scope="col">Luas Kamar</th>
+        <th scope="col">Harga</th>
+        <th scope="col">Deskripsi</th>
+        <th scope="col">Foto</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($data_kamar as $kamar): ?>
         <tr>
-          <th scope="col">Nama Kamar</th>
-          <th scope="col">Harga</th>
-          <th scope="col">Deskripsi</th>
-          <th scope="col">Foto</th>
-          <th scope="col">Status</th>
+          <td><?php echo $kamar->nama_kamar; ?></td>
+          <td><?php echo $kamar->luas_kamar; ?></td>
+          <td><?php echo $kamar->harga; ?></td>
+          <td><?php echo $kamar->deskripsi; ?></td>
+          <td>foto</td>
+          <td><?php if ($kamar->status==1) {
+            echo "Tersedia";
+          } else {
+            echo "Penuh";
+          } ?></td>
         </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($data_kamar as $kamar): ?>
-          <tr>
-            <td><?php echo $kamar->nama_kamar; ?></td>
-            <td><?php echo $kamar->harga; ?></td>
-            <td><?php echo $kamar->deskripsi; ?></td>
-            <td>foto</td>
-            <td><?php if ($kamar->status==1) {
-              echo "Tersedia";
-            } else {
-              echo "Penuh";
-            } ?></td>
-          </tr>
-        <?php endforeach; ?>
+      <?php endforeach; ?>
 
-      </tbody>
-    </table>
-  </div>
+    </tbody>
+  </table>
+</div>
 </div>
 
 <!-- Optional JavaScript -->
@@ -374,9 +436,9 @@
 <script src="<?php echo base_url('assets/bootstrap-4.1.3/js/popper.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/bootstrap-4.1.3/js/bootstrap.min.js') ?>"></script>
 <script>
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
 </script>
 </body>
 </html>
