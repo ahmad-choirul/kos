@@ -239,6 +239,7 @@
   <br>
   <div class="row">
     <table class="table col-md-8">
+      <?php foreach ($detail_kos as $kos) : ?>
       <thead>
         <tr>
           <th scope="col">Detail Kos</th>
@@ -249,6 +250,20 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <th scope='row'>Nama Kos</th>
+          <td><?php echo $kos->nama_kos; ?></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope='row'>Alamat Kos</th>
+          <td><?php echo $kos->alamat_kos; ?></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
         <tr>
           <th scope='row'>Luas Kamar</th>
           <td>3 x 4</td>
@@ -272,12 +287,15 @@
         </tr>
         <tr>
           <th scope='row'>Deskripsi Kos</th>
-          <td>Mantap wes dekat kampus</td>
+          <td>
+            <?php echo $kos->deskripsi; ?>
+          </td>
           <td></td>
           <td></td>
           <td></td>
         </tr>
       </tbody>
+      <?php endforeach; ?>
     </table>
     <div class="col-md-4">
       <div class="card">
@@ -286,22 +304,21 @@
         </div>
         <div class="card-body">
           <table class="table">
+            <?php foreach ($akun as $pemilik): ?>
+
               <tr>
                 <th scope="col">Nama Pemilik</th>
-                <td>Syams</td>
+                <td><?php echo $pemilik->nama; ?></td>
               </tr>
               <tr>
                 <th scope="col">Nomer Hp</th>
-                <td>08162536235237</td>
-              </tr>
-              <tr>
-                <th scope="col">Alamat</th>
-                <td>Jalan jawa 51</td>
+                <td><?php echo $pemilik->no_wa; ?></td>
               </tr>
               <tr>
                 <th scope="col">Email</th>
-                <td>jksadjsah@email.com</td>
+                <td><?php echo $pemilik->email; ?></td>
               </tr>
+            <?php endforeach; ?>
           </table>
         </div>
       </div>
@@ -320,41 +337,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Anggora</td>
-          <td>Rp. 350.000</td>
-          <td>Mantep polll</td>
-          <td>Foto</td>
-          <td>Tersedia</td>
-        </tr>
-        <tr>
-          <td>Anggora</td>
-          <td>Rp. 350.000</td>
-          <td>Mantep polll</td>
-          <td>Foto</td>
-          <td>Tersedia</td>
-        </tr>
-        <tr>
-          <td>Anggora</td>
-          <td>Rp. 350.000</td>
-          <td>Mantep polll</td>
-          <td>Foto</td>
-          <td>Tersedia</td>
-        </tr>
-        <tr>
-          <td>Anggora</td>
-          <td>Rp. 350.000</td>
-          <td>Mantep polll</td>
-          <td>Foto</td>
-          <td>Tersedia</td>
-        </tr>
-        <tr>
-          <td>Anggora</td>
-          <td>Rp. 350.000</td>
-          <td>Mantep polll</td>
-          <td>Foto</td>
-          <td>Tersedia</td>
-        </tr>
+        <?php foreach ($data_kamar as $kamar): ?>
+          <tr>
+            <td><?php echo $kamar->nama_kamar; ?></td>
+            <td><?php echo $kamar->harga; ?></td>
+            <td><?php echo $kamar->deskripsi; ?></td>
+            <td>foto</td>
+            <td><?php if ($kamar->status==1) {
+              echo "Tersedia";
+            } else {
+              echo "Penuh";
+            } ?></td>
+          </tr>
+        <?php endforeach; ?>
+
       </tbody>
     </table>
   </div>

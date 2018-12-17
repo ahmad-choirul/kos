@@ -246,7 +246,7 @@
         echo '<p class="card-text"><span class="oi oi-map-marker"></span> '.$row->alamat_kos.' </p>';
         echo '<p class="card-text"> Rp. '.$row->harga_bawah.' - '.$row->harga_atas.' </p>';
         echo '<p class="card-text">'.$row->deskripsi.'</p>';
-        echo '<a href="'. base_url('Ckos').'" class="btn btn-primary">Detail Kos</a>';
+        echo '<a href="'. base_url('Ckos/detail/'.$row->id_kos).'" class="btn btn-primary">Detail Kos</a>';
         echo '</div>';
         echo '</div>';
         echo '</div>';
