@@ -118,6 +118,7 @@ class Cdaftarkos extends CI_Controller {
 		$this->load->helper('file');
 		$this->load->library('upload');
 		$this->form_validation->set_rules('nama_kos', 'nama_kos', 'required');
+		$this->form_validation->set_rules('parkir', 'parkir', 'required');
 		$this->form_validation->set_rules('harga_atas', 'harga_atas', 'required|alpha_dash|numeric');
 		$this->form_validation->set_rules('harga_bawah', 'harga_bawah', 'required|alpha_dash|numeric');
 		$this->form_validation->set_rules('alamat_kos', 'alamat_kos', 'required');
@@ -135,12 +136,14 @@ class Cdaftarkos extends CI_Controller {
 			$harga_bawah = $this->input->post('harga_bawah');
 			$harga_atas = $this->input->post('harga_atas');
 			$deskripsi = $this->input->post('deskripsi');
+			$parkir = $this->input->post('parkir');
 			$data = array(
 				'id_kos' => $id_kos,
 				'nama_kos' => $nama_kos,
 				'alamat_kos' => $alamat_kos,
 				'harga_bawah' => $harga_bawah,
 				'harga_atas' => $harga_atas,
+				'parkir' => $parkir,
 				'deskripsi' => $deskripsi
 			);
 			$query = $this->Mkos->update($data,$id_kos);
@@ -219,8 +222,9 @@ class Cdaftarkos extends CI_Controller {
 		$this->load->library('upload');
 		$this->form_validation->set_rules('nama_kos', 'nama_kos', 'required');
 		$this->form_validation->set_rules('nama_kamar', 'nama_kamar', 'required');
+		$this->form_validation->set_rules('luas_kamar', 'luas_kamar', 'required');
 		$this->form_validation->set_rules('harga', 'harga', 'required|alpha_dash|numeric');
-		$this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
+		$this->form_validation->set_rules('deskripsi_kamar', 'deskripsi_kamar', 'required');
 		$this->form_validation->set_message('required', 'Wajib diisi!');
 		$this->form_validation->set_message('alpha_dash', 'Tidak boleh mengandung spasi!');
 		$this->form_validation->set_message('is_unique', 'Data sudah ada!');
@@ -233,12 +237,14 @@ class Cdaftarkos extends CI_Controller {
 			$id_detail_kos = $this->input->post('id_detail_kos');
 			$nama_kamar = $this->input->post('nama_kamar');
 			$harga = $this->input->post('harga');
-			$deskripsi = $this->input->post('deskripsi');
+			$luas_kamar = $this->input->post('luas_kamar');
+			$deskripsi_kamar = $this->input->post('deskripsi_kamar');
 			$data = array(
 				'id_detail_kos' => $id_detail_kos,
 				'nama_kamar' => $nama_kamar,
+				'luas_kamar' => $luas_kamar,
 				'harga' => $harga,
-				'deskripsi' => $deskripsi
+				'deskripsi_kamar' => $deskripsi_kamar
 			);
 			$query = $this->Mkos->updatekamar($data,$id_detail_kos);
 			if ($query>0) {
@@ -294,6 +300,7 @@ class Cdaftarkos extends CI_Controller {
 		$this->form_validation->set_rules('nama_kos', 'nama_kos', 'required');
 		$this->form_validation->set_rules('alamat_kos', 'alamat_kos', 'required');
 		$this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
+		$this->form_validation->set_rules('parkir', 'parkir', 'required');
 		$this->form_validation->set_message('required', 'Wajib diisi!');
 		$this->form_validation->set_message('alpha_dash', 'Tidak boleh mengandung spasi!');
 		$this->form_validation->set_message('numeric', 'Hanya boleh diisi angka!');
@@ -317,6 +324,7 @@ class Cdaftarkos extends CI_Controller {
 			$harga_atas = $this->input->post('harga_atas');
 			$deskripsi = $this->input->post('deskripsi');
 			$foto_kos = $this->input->post('foto_kos');
+			$parkir = $this->input->post('parkir');
 			
 
 			$config['allowed_types'] = 'jpg|jpeg';
@@ -337,6 +345,7 @@ class Cdaftarkos extends CI_Controller {
 					'harga_bawah' 	=> $harga_bawah,
 					'harga_atas' 	=> $harga_atas,
 					'deskripsi' 	=> $deskripsi,
+					'parkir' 	=> $parkir,
 					'foto_kos' 		=> $foto_kos
 					
 				);
@@ -355,8 +364,9 @@ class Cdaftarkos extends CI_Controller {
 		{
 
 			$this->form_validation->set_rules('nama_kamar', 'nama_kamar', 'required');
+			$this->form_validation->set_rules('luas_kamar', 'luas_kamar', 'required');
 			$this->form_validation->set_rules('harga', 'harga', 'required|alpha_dash|numeric');
-			$this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
+			$this->form_validation->set_rules('deskripsi_kamar', 'deskripsi_kamar', 'required');
 			$this->form_validation->set_message('required', 'Wajib diisi!');
 			$this->form_validation->set_message('alpha_dash', 'Tidak boleh mengandung spasi!');
 			$this->form_validation->set_message('numeric', 'Hanya boleh diisi angka!');
@@ -374,9 +384,10 @@ class Cdaftarkos extends CI_Controller {
 				$result = (array) $this->Mkos->getnextid();
 				$id = $result["AUTO_INCREMENT"];
 				$nama_kamar = $this->input->post('nama_kamar');
+				$luas_kamar = $this->input->post('luas_kamar');
 				$id_kos = $this->input->post('id_kos');
 				$harga = $this->input->post('harga');
-				$deskripsi = $this->input->post('deskripsi');
+				$deskripsi_kamar = $this->input->post('deskripsi_kamar');
 				$foto_kamar_kos = $this->input->post('foto_kamar_kos');
 
 
@@ -393,8 +404,9 @@ class Cdaftarkos extends CI_Controller {
 					$data = array(
 						'id_kos' 		=> $id_kos,
 						'nama_kamar' 		=> $nama_kamar,
+						'luas_kamar' 		=> $luas_kamar,
 						'harga' 	=> $harga,
-						'deskripsi' 	=> $deskripsi,
+						'deskripsi_kamar' 	=> $deskripsi_kamar,
 						'foto' 		=> $foto_kamar_kos
 
 					);

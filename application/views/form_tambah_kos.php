@@ -30,6 +30,7 @@
 										<b><?php echo form_error('nama_kos'); ?></b>
 									</div>
 								</div>
+
 								<div class="form-group">
 									<label for="alamat_kos" class="col-sm-2 control-label">Alamat Kos</label>
 									<div class="col-sm-10">
@@ -54,11 +55,17 @@
 								<div class="form-group">
 									<label for="deskripsi" class="col-sm-2 control-label">Deskripsi</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" placeholder="Masukkan Deskripsi Kos anda" name="deskripsi" id="deskripsi" value="<?php echo set_value('deskripsi');?>">
+										<input type="text" class="form-control" placeholder="Masukkan Deskripsi Kos anda dan batasi dengan tanda koma (,)" name="deskripsi" id="deskripsi" value="<?php echo set_value('deskripsi');?>">
 										<b><?php echo form_error('deskripsi'); ?></b>
 									</div>
 								</div>
-
+								<div class="form-group">
+									<label for="parkir" class="col-sm-2 control-label">parkir</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" placeholder="Masukkan Deskripsi parkir Kos anda dan batasi dengan tanda koma (,)" name="parkir" id="parkir" value="<?php echo set_value('parkir');?>">
+										<b><?php echo form_error('parkir'); ?></b>
+									</div>
+								</div>
 								<div class="form-group">
 									<label for="foto_kos" class="col-sm-2 control-label">Foto Kos</label>
 									<div class="col-sm-10">
@@ -82,6 +89,6 @@
 	</section>
 	<script type="text/javascript">
 		$(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-});x
+			$('.js-example-basic-multiple').select2();
+		});x
 	</script>

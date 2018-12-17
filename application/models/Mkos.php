@@ -33,8 +33,8 @@ class Mkos extends CI_Model {
 		$query = $this->db->update('detail_kos',$data);
 		return $query;
 	}
-	public function updatekamar($data,$kta){
-		$this->db->where('id_detail_kos', $kta);
+	public function updatekamar($data,$id){
+		$this->db->where('id_detail_kos', $id);
 		$query = $this->db->update('detail_kos',$data);
 		return $query;
 	}
