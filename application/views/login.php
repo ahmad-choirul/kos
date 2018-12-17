@@ -67,20 +67,10 @@
               <div class="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                KTA atau password salah!
+                username atau password salah!
               </div>
               <?php
               unset($_SESSION['error']);
-            }
-            if (isset($_SESSION['erroremail'])) {
-              ?>
-              <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                Gagal mengirim email verifikasi!!!!!
-              </div>
-              <?php
-              unset($_SESSION['erroremail']);
             }
             if (isset($_SESSION['erroremail'])) {
               ?>
@@ -136,7 +126,7 @@
   <div class="modal fade" id="modalDaftar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <form action="<?php echo site_url('Auth/proses'); ?>" method="post">
+        <form action="<?php echo site_url('Cregistrasi/registrasibaru'); ?>" method="post">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Daftar</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">

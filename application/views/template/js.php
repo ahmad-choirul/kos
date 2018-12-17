@@ -37,6 +37,7 @@
 <script src="<?php echo base_url('assets/adminlte/dist/js/pages/dashboard.js') ?>" type="text/javascript"></script>
 
 <script src="<?php echo base_url('assets/adminlte/bower_components/select2/dist/js/select2.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/adminlte/bbower_components/select2/dist/js/select2.full.min.js') ?>"></script>
 <script type="text/javascript">
 	$(".selections").select2();
 </script>

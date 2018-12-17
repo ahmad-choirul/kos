@@ -7,6 +7,11 @@
 	<strong>Developed By: Kelompok PKL ILKOM UNEJ </strong>
 </footer>
 </div><!-- ./wrapper -->
-
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+  })
+</script>
 </body>
 </html>
