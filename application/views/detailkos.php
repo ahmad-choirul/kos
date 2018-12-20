@@ -21,9 +21,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <input class="form-control offset-md-7 col-md-2 col-8" type="text" name="kata" style="margin-right:10px;" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary" style="margin-right:10px;" type="submit">Search</button>
 
+      <input class="form-control offset-md-7 col-md-2 col-8" type="search" style="margin-right:10px;" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-primary" style="margin-right:10px;" type="submit">Search</button>
+      <!-- </form> -->
       <button type="button" class="btn btn-primary " style="margin-right: 10px;" data-toggle="modal" data-target="#modalLogin">
         Masuk
       </button>
@@ -62,7 +63,6 @@
               <?php
               unset($_SESSION['success']);
             }
-
             if (isset($_SESSION['error'])) {
               ?>
               <div class="alert alert-danger alert-dismissible">
@@ -206,6 +206,13 @@
     </div>
   </div>
 </div>
+<?php foreach ($detail_kos as $key) {
+  $datafoto = array($key->foto_kos);
+}
+foreach ($data_kamar as $key) {
+  array_push($datafoto,$key->foto);
+}
+?>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -213,33 +220,33 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner align-bottom">
-
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="assets/img/kos/1.jpg" alt="First slide">
+    <?php for ($i=0; $i <count($datafoto) ; $i++) { 
+      if ($i==0) {
+     ?>
+     <div class="carousel-item active">
+      <img class="d-block w-100" src="<?php echo base_url($datafoto[$i]) ?>" alt="First slide">
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="assets/img/kos/2.jpg" alt="Second slide">
+  <?php }else{ ?>
+     <div class="carousel-item">
+      <img class="d-block w-100" src="<?php echo base_url($datafoto[$i]) ?>" alt="First slide">
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="assets/img/kos/4.jpg" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+  <?php } }?>
+</div>
+<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="sr-only">Next</span>
+</a>
 </div>
 
 <div class="container">
   <br>
   <div class="row">
-<<<<<<< HEAD
     <div class="table-responsive col-md-8">
-      <table class="table ">
+      <table class="table" >
         <?php foreach ($detail_kos as $kos) : ?>
           <thead>
             <tr>
@@ -265,51 +272,31 @@
               <td></td>
               <td></td>
             </tr>
-            <tr>
-              <th scope='row'>Luas Kamar</th>
-              <td>3 x 4</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+
             <tr>
               <th scope='row'>Fasilitas</th>
-              <td>Kamar mandi dalam</td>
-              <td>Tv dalam</td>
-              <td>AC</td>
-              <td>AC</td>
-              <td>AC</td>
-              <td>AC</td>
-              <td>AC</td>
-              <br>
-              <br>
-              <td>Dapur bersama</td>
-              <td>Dapur bersama</td>
-              <td>Dapur bersama</td>
-              <td>Dapur bersama</td>
-              <td>Dapur bersama</td>
+              <?php
+              $str_arr = explode (",", $kos->deskripsi);    
+              foreach ($str_arr as $a) {
+                ?>
+                <td><?php echo($a) ?></td>
+              <?php } ?>
             </tr>
             <tr>
-              <th scope='row'>Fasilitas Parkir</th>
-              <td>Mobil</td>
-              <td>Sepeda</td>
-              <td></td>
-              <td></td>
+              <th scope='row'>Parkir</th>
+              <?php
+              $str_arr = explode (",", $kos->parkir);    
+              foreach ($str_arr as $a) {
+                ?>
+                <td><?php echo($a) ?></td>
+              <?php } ?>
             </tr>
-            <tr>
-              <th scope='row'>Deskripsi Kos</th>
-              <td>
-                <?php echo $kos->deskripsi; ?>
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+
           </tbody>
         <?php endforeach; ?>
       </table>
-
     </div>
+    
     <div class="col-md-4">
       <div class="card">
         <div class="card-header text-center">
@@ -318,116 +305,61 @@
         <div class="card-body">
           <table class="table">
             <?php foreach ($akun as $pemilik): ?>
-=======
-    <table class="table col-md-8">
-      <?php foreach ($detail_kos as $kos) : ?>
-        <thead>
-          <tr>
-            <th scope="col">Detail Kos</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope='row'>Nama Kos</th>
-            <td><?php echo $kos->nama_kos; ?></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope='row'>Alamat Kos</th>
-            <td><?php echo $kos->alamat_kos; ?></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
 
-        <tr>
-          <th scope='row'>Fasilitas</th>
-        <?php
-        $str_arr = explode (",", $kos->deskripsi);    
-        foreach ($str_arr as $a) {
-        ?>
-          <td><?php echo($a) ?></td>
-        <?php } ?>
-        </tr>
-        <tr>
-          <th scope='row'>Parkir</th>
-        <?php
-        $str_arr = explode (",", $kos->parkir);    
-        foreach ($str_arr as $a) {
-        ?>
-          <td><?php echo($a) ?></td>
-        <?php } ?>
-        </tr>
-
-      </tbody>
-    <?php endforeach; ?>
-  </table>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-header text-center">
-        Kontak
-      </div>
-      <div class="card-body">
-        <table class="table">
-          <?php foreach ($akun as $pemilik): ?>
->>>>>>> c1fc85deeca7ce56f983744201702e86c4991ec0
-
-            <tr>
-              <th scope="col">Nama Pemilik</th>
-              <td><?php echo $pemilik->nama; ?></td>
-            </tr>
-            <tr>
-              <th scope="col">Nomer Hp</th>
-              <td><?php echo $pemilik->no_wa; ?></td>
-            </tr>
-            <tr>
-              <th scope="col">Email</th>
-              <td><?php echo $pemilik->email; ?></td>
-            </tr>
-          <?php endforeach; ?>
-        </table>
+              <tr>
+                <th scope="col">Nama Pemilik</th>
+                <td><?php echo $pemilik->nama; ?></td>
+              </tr>
+              <tr>
+                <th scope="col">Nomer Hp</th>
+                <td><?php echo $pemilik->no_wa; ?></td>
+              </tr>
+              <tr>
+                <th scope="col">Email</th>
+                <td><?php echo $pemilik->email; ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<br>
-<div class="row">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Nama Kamar</th>
-        <th scope="col">Luas Kamar</th>
-        <th scope="col">Harga</th>
-        <th scope="col">Deskripsi</th>
-        <th scope="col">Foto</th>
-        <th scope="col">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($data_kamar as $kamar): ?>
+  <br>
+  <div class="row">
+    <table class="table">
+      <thead>
         <tr>
-          <td><?php echo $kamar->nama_kamar; ?></td>
-          <td><?php echo $kamar->luas_kamar; ?></td>
-          <td><?php echo $kamar->harga; ?></td>
-          <td><?php echo $kamar->deskripsi; ?></td>
-          <td>foto</td>
-          <td><?php if ($kamar->status==1) {
-            echo "Tersedia";
-          } else {
-            echo "Penuh";
-          } ?></td>
+          <th scope="col">Nama Kamar</th>
+          <th scope="col">Luas Kamar</th>
+          <th scope="col">Harga</th>
+          <th scope="col">Deskripsi</th>
+          <th scope="col">Foto</th>
+          <th scope="col">Status</th>
         </tr>
-      <?php endforeach; ?>
+      </thead>
+      <tbody>
+        <?php foreach ($data_kamar as $kamar): ?>
+          <tr>
+            <td><?php echo $kamar->nama_kamar; ?></td>
+            <td><?php echo $kamar->luas_kamar; ?></td>
+            <td><?php echo $kamar->harga; ?></td>
+            <td><?php echo $kamar->deskripsi_kamar; ?></td>
+            <td>
+            <!-- <a href="<?php echo base_url($kamar->foto) ?>" lin></a>
+              <img src="<?php echo base_url($kamar->foto) ?>" style="max-width: 100px;"> -->
+              <a target="_blank" rel="noopener noreferrer" href="<?php echo base_url($kamar->foto); ?>"><img src="<?php echo base_url($kamar->foto); ?>" height='75'></a>
+            </td>
+            <td><?php if ($kamar->status==1) {
+              echo "Tersedia";
+            } else {
+              echo "Tidak Tersedia";
+            } ?></td>
+          </tr>
+        <?php endforeach; ?>
 
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <!-- Optional JavaScript -->

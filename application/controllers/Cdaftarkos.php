@@ -230,8 +230,6 @@ class Cdaftarkos extends CI_Controller {
 		$this->form_validation->set_message('is_unique', 'Data sudah ada!');
 		$this->form_validation->set_message('numeric', 'Hanya boleh diisi angka!');
 		if ($this->form_validation->run() == FALSE) {
-			print_r($this->input->post('id_detail_kos'));
-			// print_r('asfjh');
 			$this->editdatakamarkos($this->input->post('id_detail_kos'));
 		} else {
 			$id_detail_kos = $this->input->post('id_detail_kos');
@@ -324,13 +322,7 @@ class Cdaftarkos extends CI_Controller {
 			$harga_atas = $this->input->post('harga_atas');
 			$deskripsi = $this->input->post('deskripsi');
 			$foto_kos = $this->input->post('foto_kos');
-<<<<<<< HEAD
-
-=======
 			$parkir = $this->input->post('parkir');
-			
->>>>>>> c1fc85deeca7ce56f983744201702e86c4991ec0
-
 			$config['allowed_types'] = 'jpg|jpeg';
 			$config['overwrite'] = true;
 			$config['upload_path'] = 'assets/gambar_upload/fotokos/';

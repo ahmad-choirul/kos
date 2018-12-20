@@ -25,7 +25,8 @@
 			</div>
 		</div>
 		<div class="widget-content nopadding">
-			<table class="table table-bordered table-striped">
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th>NO</th>
@@ -74,6 +75,8 @@
 						?>
 					</tbody>
 				</table>
+			</div>
+			
 			</div>
 			<?php 
 			echo $this->pagination->create_links(); 

@@ -24,6 +24,7 @@
 			</div>
 		</div>
 		<div class="widget-content nopadding" style="overflow-x: auto;">
+			<div class="table-responsive">
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
@@ -64,6 +65,7 @@
 					?>
 				</tbody>
 			</table>
+		</div>
 		</div>
 		<?php 
 		echo $this->pagination->create_links(); 
